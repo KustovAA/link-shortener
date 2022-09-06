@@ -1,8 +1,8 @@
-import argparse
-import requests
-
+from argparse import ArgumentParser
 from urllib.parse import urlparse
+
 from environs import Env
+import requests
 
 
 def shorten_link(token, url):
@@ -40,7 +40,7 @@ def is_bitlink(token, url):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = ArgumentParser()
     parser.add_argument("url")
 
     env = Env()
