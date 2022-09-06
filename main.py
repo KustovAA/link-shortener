@@ -4,13 +4,6 @@ import requests
 from urllib.parse import urlparse
 from environs import Env
 
-parser = argparse.ArgumentParser()
-parser.add_argument("url")
-
-
-env = Env()
-env.read_env()
-
 
 def shorten_link(token, url):
     response = requests.post(
@@ -48,6 +41,12 @@ def is_bitlink(token, url):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("url")
+
+    env = Env()
+    env.read_env()
+
     url = parser.parse_args().url
     token = env.str('BITLY_TOKEN')
     if is_bitlink(token, url):
